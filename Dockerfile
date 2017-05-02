@@ -21,4 +21,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/local/kafka_2.10-0.10.2.0
-CMD ["bash"]
+
+EXPOSE 9092 
+
+ADD start.sh /start.sh
+
+CMD ["/start.sh"]
