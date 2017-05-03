@@ -3,6 +3,7 @@ sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/0.0.0.0:9092/g"
 sed -i "s/#advertised.listeners/advertised.listeners/g" config/server.properties
 sed -i "s/your.host.name:9092/${KAFKA_HOST_IP}:${KAFKA_PORT}/g" config/server.properties
 if [ ${ZOOKEEPER} == "localhost:2181" ];
+  mkdir -p /tmp/zookeeper
   bin/zookeeper-server-start.sh config/zookeeper.properties & 
 else 
   sed -i "s/zookeeper.connect=localhost:2181/zookeeper.connect=${ZOOKEEPER}/g" config/server.properties
