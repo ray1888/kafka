@@ -22,10 +22,12 @@ RUN apt-get update \
     && apt-get remove axel -y \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
-ENV TOPICS test
-ENV HOST_IP 127.0.0.1
 
 WORKDIR /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
+
+ENV KAFKA_TOPICS test
+ENV KAFKA_HOST_IP 127.0.0.1
+ENV KAFKA_PROT 9092
 
 EXPOSE 9092
 
