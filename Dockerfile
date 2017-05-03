@@ -1,6 +1,9 @@
 FROM daocloud.io/library/debian:jessie
 MAINTAINER "Cloth Mo" <root@buxiaomo.com>
 
+ENV KAFKA_VERSION=0.10.2.0
+ENV SCALA_VERSION=2.10
+
 COPY sources.list /etc/apt/sources.list
 
 RUN apt-get update \
@@ -13,14 +16,14 @@ ENV PATH $PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 
 RUN apt-get update \
     && apt-get install axel --no-install-recommends -y \
-    && axel -n 20 --output=/usr/local/src/kafka_2.10-0.10.2.0.tgz http://apache.fayea.com/kafka/0.10.2.0/kafka_2.10-0.10.2.0.tgz \
-    && tar -zxf /usr/local/src/kafka_2.10-0.10.2.0.tgz -C /usr/local/ \
-    && rm -rf /usr/local/src/kafka_2.10-0.10.2.0.tgz \
+    && axel -n 20 --output=/usr/local/src/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz http://apache.fayea.com/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
+    && tar -zxf /usr/local/src/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz -C /usr/local/ \
+    && rm -rf /usr/local/src/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
     && apt-get remove axel -y \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/local/kafka_2.10-0.10.2.0
+WORKDIR /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
 
 EXPOSE 2181 9092
 
