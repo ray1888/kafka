@@ -1,4 +1,7 @@
 #!/bin/bash
+sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/0.0.0.0:9092/g" config/server.properties
+sed -i "s/#advertised.listeners/advertised.listeners/g" config/server.properties
+sed -i "s/your.host.name:9092/${HOST_IP}:9092/g" config/server.properties
 bin/zookeeper-server-start.sh config/zookeeper.properties & 
 bin/kafka-server-start.sh config/server.properties & 
 sleep 100
