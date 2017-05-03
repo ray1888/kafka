@@ -13,7 +13,7 @@ ENV PATH $PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 
 RUN apt-get update \
     && apt-get install axel --no-install-recommends -y \
-    && axel --output=/usr/local/src/kafka_2.10-0.10.2.0.tgz http://apache.fayea.com/kafka/0.10.2.0/kafka_2.10-0.10.2.0.tgz \
+    && axel -n 20 --output=/usr/local/src/kafka_2.10-0.10.2.0.tgz http://apache.fayea.com/kafka/0.10.2.0/kafka_2.10-0.10.2.0.tgz \
     && tar -zxf /usr/local/src/kafka_2.10-0.10.2.0.tgz -C /usr/local/ \
     && rm -rf /usr/local/src/kafka_2.10-0.10.2.0.tgz \
     && apt-get remove axel -y \
