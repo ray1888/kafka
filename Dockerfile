@@ -23,6 +23,7 @@ RUN apt-get update \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
 ENV TOPICS test
+ENV HOST_IP 127.0.0.1
 
 WORKDIR /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
 
