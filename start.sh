@@ -2,6 +2,9 @@
 sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/0.0.0.0:9092/g" config/server.properties
 # sed -i "s/#advertised.listeners/advertised.listeners/g" config/server.properties
 # sed -i "s/your.host.name:9092/${KAFKA_HOST_IP}:${KAFKA_PORT}/g" config/server.properties
+if [ ${BROKER_ID} != "NULL" ];then
+    sed -i "s/broker.id=.*/broker.id=${BROKER_ID}/g" config/server.properties
+fi
 if [ ${ZOOKEEPER} == "localhost:2181" ];then
     bin/zookeeper-server-start.sh config/zookeeper.properties & 
 else 
