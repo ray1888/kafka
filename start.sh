@@ -1,7 +1,12 @@
 #!/bin/bash
 sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/0.0.0.0:9092/g" config/server.properties
+
 # sed -i "s/#advertised.listeners/advertised.listeners/g" config/server.properties
 # sed -i "s/your.host.name:9092/${KAFKA_HOST_IP}:${KAFKA_PORT}/g" config/server.properties
+
+sed -i "/log.retention.hours/a message.max.byte=5242880" config/server.properties
+sed -i "/log.retention.hours/a default.replication.factor=2" config/server.properties
+sed -i "/log.retention.hours/a replica.fetch.max.bytes=5242880" config/server.properties
 IP=`ip addr | grep inet | grep -v "127.0.0.1" | awk -F '/' '{print $1}' | awk '{print $2}'`
 echo "host.name=${IP}" >>  config/server.properties
 if [ ${BROKER_ID} != "NULL" ];then
