@@ -30,4 +30,4 @@ if [ ${KAFKA_TOPICS} != "NULL" ];then
         bin/kafka-topics.sh --create --zookeeper ${zookeeper} --replication-factor 1 --partitions 1 --topic ${KAFKA_TOPICS}
     fi
 fi
-tail -f logs/*.log
+exec tail -f logs/*.log
