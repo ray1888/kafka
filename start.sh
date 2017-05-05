@@ -1,5 +1,6 @@
 #!/bin/bash
-IP=`ip addr | grep inet | grep -v "127.0.0.1" | awk -F '/' '{print $1}' | awk '{print $2}'`
+# IP=`ip addr | grep inet | grep -v "127.0.0.1" | awk -F '/' '{print $1}' | awk '{print $2}'`
+IP=`hostname -i`
 
 sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/0.0.0.0:9092/g" config/server.properties
 # sed -i "s/#advertised.listeners/advertised.listeners/g" config/server.properties
