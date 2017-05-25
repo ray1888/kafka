@@ -6,6 +6,9 @@ ENV SCALA_VERSION=2.10
 
 COPY sources.list /etc/apt/sources.list
 
+RUN echo "Asia/Shanghai" > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata
+
 RUN apt-get update \
     && apt-get install openjdk-7-jdk --no-install-recommends -y \
     && apt-get clean all \
