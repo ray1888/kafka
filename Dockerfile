@@ -17,11 +17,11 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ENV PATH $PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 
+ADD download-kafka.sh /download-kafka.sh
 RUN apt-get update \
     && apt-get install axel --no-install-recommends -y \
-    && axel -n 20 --output=/usr/local/src/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz http://apache.fayea.com/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
-    && tar -zxf /usr/local/src/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz -C /usr/local/ \
-    && rm -rf /usr/local/src/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz \
+    && chmod a+x /download-kafka.sh \
+    && /download-kafka.sh \
     && apt-get remove axel -y \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
@@ -36,7 +36,7 @@ ENV KAFKA_HOST_IP 127.0.0.1
 ENV KAFKA_PORT 9092
 
 
-EXPOSE 9092
+EXPOSE 9092 2181
 
 ADD start.sh /start.sh
 
