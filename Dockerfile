@@ -1,6 +1,3 @@
-
-
-
 FROM daocloud.io/library/debian:jessie
 MAINTAINER "Cloth Mo" <root@buxiaomo.com>
 
