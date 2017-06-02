@@ -1,9 +1,9 @@
 # kafka
 
-    docker run -d --name kafka 
+    docker run -d --name kafka daocloud.io/buxiaomo/kafka
     
-    
-
+    
+# docker-compose
 ```
 version: '2'
 services:
