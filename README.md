@@ -15,7 +15,7 @@ services:
             - BROKER_ID=1
             - ZOOKEEPER_CLUSTER=zookeeper01:2181,zookeeper02:2181,zookeeper03:2181
         networks:
-            evm_pord:
+            kafka:
                 aliases:
                     - kafka01
     kafka02:
@@ -26,7 +26,7 @@ services:
             - BROKER_ID=2
             - ZOOKEEPER_CLUSTER=zookeeper01:2181,zookeeper02:2181,zookeeper03:2181
         networks:
-            evm_pord:
+            kafka:
                 aliases:
                     - kafka02
     kafka03:
@@ -37,7 +37,10 @@ services:
             - BROKER_ID=3
             - ZOOKEEPER_CLUSTER=zookeeper01:2181,zookeeper02:2181,zookeeper03:2181
         networks:
-            evm_pord:
+            kafka:
                 aliases:
                     - kafka03
+networks:
+    kafka:
+        external: true
 ```
