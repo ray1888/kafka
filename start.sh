@@ -1,5 +1,5 @@
 #!/bin/bash
-ping -c 3 zookeeper01 zookeeper02 zookeeper03
+ping zookeeper01 zookeeper02 zookeeper03
 telnet zookeeper01 2181 << EOF
 
 
