@@ -1,4 +1,7 @@
 #!/bin/bash
+ping -c 10 zookeeper01
+ping -c 10 zookeeper02
+ping -c 10 zookeeper03
 sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/0.0.0.0:9092/g" config/server.properties
 
 KAFKA_EXTERNAL=`echo ${KAFKA_EXTERNAL} | tr [A-Z] [a-z]`
