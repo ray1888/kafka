@@ -28,6 +28,11 @@ RUN apt-get update \
 
 WORKDIR /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
 
+RUN apt-get update \
+    && apt-get install telnet -y \
+    && apt-get clean all \
+    && rm -rf /var/lib/apt/lists/*
+    
 ENV BROKER_ID NULL
 ENV KAFKA_TOPICS NULL
 ENV ZOOKEEPER_CLUSTER localhost:2181
