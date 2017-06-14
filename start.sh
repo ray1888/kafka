@@ -1,7 +1,10 @@
 #!/bin/bash
-ping -c 3 zookeeper01
-ping -c 3 zookeeper02
-ping -c 3 zookeeper03
+ping -c 3 zookeeper01 zookeeper02 zookeeper03
+telnet zookeeper01 2181 << EOF
+
+
+EOF
+sed -i "s/zookeeper.connection.timeout.ms=6000/zookeeper.connection.timeout.ms=12000/g" config/server.properties
 sed -i "s/#listeners=PLAINTEXT:\/\/:9092/listeners=PLAINTEXT:\/\/0.0.0.0:9092/g" config/server.properties
 
 KAFKA_EXTERNAL=`echo ${KAFKA_EXTERNAL} | tr [A-Z] [a-z]`
