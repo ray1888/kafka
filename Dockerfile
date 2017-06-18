@@ -26,12 +26,11 @@ RUN apt-get update \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
+COPY dce-app-entrypoint /usr/local/bin/
 
-RUN apt-get update \
-    && apt-get install telnet -y \
-    && apt-get clean all \
-    && rm -rf /var/lib/apt/lists/*
+RUN chmod +x /usr/local/bin/dce-app-entrypoint
+
+WORKDIR /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
     
 ENV BROKER_ID NULL
 ENV KAFKA_TOPICS NULL
