@@ -26,19 +26,15 @@ RUN apt-get update \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
 
-COPY dce-app-entrypoint /usr/local/bin/
-
-RUN chmod +x /usr/local/bin/dce-app-entrypoint
 
 WORKDIR /usr/local/kafka_${SCALA_VERSION}-${KAFKA_VERSION}
-    
-ENV BROKER_ID NULL
+
 ENV KAFKA_TOPICS NULL
 ENV ZOOKEEPER_CLUSTER localhost:2181
 
-ENV KAFKA_EXTERNAL false
-ENV KAFKA_HOST_IP 127.0.0.1
-ENV KAFKA_PORT 9092
+ENV BROKER_ID NULL
+ENV KAFKA_HOST_IP NULL
+ENV KAFKA_PORT NULL
 
 EXPOSE 9092 2181
 
