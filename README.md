@@ -7,7 +7,7 @@
 version: '2'
 services:
     zookeeper01:
-        image: zookeeper
+        image: daocloud.io/buxiaomo/zookeeper
         ports:
             - 8004:2181/tcp
         environment:
@@ -18,7 +18,7 @@ services:
                 aliases:
                     - zookeeper01
     zookeeper02:
-        image: zookeeper
+        image: daocloud.io/buxiaomo/zookeeper
         ports:
             - 8005:2181/tcp
         environment:
@@ -29,7 +29,7 @@ services:
                 aliases:
                     - zookeeper02
     zookeeper03:
-        image: zookeeper
+        image: daocloud.io/buxiaomo/zookeeper
         ports:
             - 8006:2181/tcp
         environment:
