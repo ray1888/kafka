@@ -25,4 +25,7 @@ fi
 if [ ${KAFKA_TOPICS} != "NULL" ];then
     echo "create.topics=${KAFKA_TOPICS}" >> config/server.properties
 fi
+# 配置kafka参数
+
+echo "log.cleanup.policy = delete" >> config/server.properties
 exec bin/kafka-server-start.sh config/server.properties
