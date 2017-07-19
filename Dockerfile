@@ -40,4 +40,4 @@ EXPOSE 9092 2181
 
 ADD start.sh /start.sh
 
-CMD ["/bin/bash","/start.sh"]
+CMD ["/start.sh"]
