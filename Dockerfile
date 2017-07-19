@@ -38,6 +38,6 @@ ENV KAFKA_PORT NULL
 
 EXPOSE 9092 2181
 
-ADD start.sh /start.sh
+ADD start.sh /usr/local/bin/start.sh
 
-CMD ["/start.sh"]
+CMD ["start.sh"]
